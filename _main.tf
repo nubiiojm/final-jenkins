@@ -2,6 +2,14 @@ provider "aws" {
     region     = "us-east-1"
 }
 
+terraform {
+  backend "s3" {
+    bucket = "my-s3-bucket-25"
+    key    = "terraform.tfstate"
+    region = "us-east-1"
+  }
+}
+
 resource "aws_instance" "instance" {
   ami                         = "${var.instance-ami}"
   instance_type               = "${var.instance-type}"
